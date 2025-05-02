@@ -12,12 +12,13 @@ done
 # 2. 輸入輸出壓縮檔名稱（不含副檔名）
 read -p "💾 請輸入壓縮檔名稱（不含副檔名）：" output_name
 
-# 3. 指定桌面作為輸出路徑
-desktop_path="$HOME/Desktop"
-output_file="$desktop_path/${output_name}.7z"
+# 3. 輸入密碼
+read -s -p "🔐 請輸入壓縮密碼：" password
+echo ""
 
-# 4. 自動產生密碼為今天日期（yyyyMMdd）
-password=$(date +"%Y%m%d")
+# 4. 設定輸出路徑為來源路徑的目錄
+source_dir=$(dirname "$source_path")
+output_file="$source_dir/${output_name}.7z"
 
 # 5. 執行壓縮
 echo "🚀 正在壓縮..."
